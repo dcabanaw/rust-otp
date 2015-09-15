@@ -65,6 +65,10 @@ mod tests {
         assert_eq!(make_hotp("base32secret3232", 0), Some(260182));
         assert_eq!(make_hotp("base32secret3232", 1), Some(55283));
         assert_eq!(make_hotp("base32secret3232", 1401), Some(316439));
+        
+        assert_eq!(make_hotp("1base32secret3232", 1401), None);
+        assert_eq!(make_hotp("♥♦♣♠", 0), None);
+        assert_eq!(make_hotp("これはテストです。", 0), None);
     }
 
     #[test]
@@ -73,5 +77,9 @@ mod tests {
         assert_eq!(make_totp_helper("base32secret3232", 3600, 0, 7), Some(260182));
         assert_eq!(make_totp_helper("base32secret3232", 30, 0, 35), Some(55283));
         assert_eq!(make_totp_helper("base32secret3232", 1, -2, 1403), Some(316439));
+        
+        assert_eq!(make_totp_helper("1base32secret3232", 30, 0, 0), None);
+        assert_eq!(make_totp_helper("♥♦♣♠", 30, 0, 0), None);
+        assert_eq!(make_totp_helper("これはテストです。", 30, 0, 0), None);
     }
 }
