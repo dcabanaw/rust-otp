@@ -12,20 +12,20 @@ Just add the library as a dependency by adding the following section to your
 ```toml
 [dependencies.otp]
 
-git = "https://github.com/TimDumol/rust-otp"
+git = "https://github.com/dcabanaw/rust-otp"
 ```
 
 # Usage
 
 ```rust
 // first argument is the secret, second argument is the counter
-assert_eq!(make_hotp("base32secret3232".to_ascii(), 0), Some(260182));
+assert_eq!(make_hotp("base32secret3232", 0), Some(260182));
 
 // first argument is the secret, followed by the time step in seconds (Google
 // Authenticator uses a time step of 30), and then the skew in seconds
 // (often used when calculating HOTPs for a sequence of consecutive
 // time intervals, to deal with potential latency and desynchronization).
-assert_eq!(make_totp("base32secret3232".to_ascii(), 30, 0), Some(260182)); // true on Unix epoch
+assert_eq!(make_totp("base32secret3232", 30, 0), Some(260182)); // true on Unix epoch
 ```
 
 
