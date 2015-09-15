@@ -15,7 +15,7 @@ use byteorder::{ByteOrder, BigEndian};
 /// Decodes a secret (given as an RFC4648 base32-encoded ASCII string)
 /// into a byte string
 fn decode_secret(secret: &str) -> Option<Vec<u8>> {
-    base32::decode(base32::Alphabet::RFC4648 { padding: true }, secret)
+    base32::decode(base32::Alphabet::RFC4648 { padding: false }, secret)
 }
 
 /// Calculates the HMAC digest for the given secret and counter.
