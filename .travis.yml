@@ -1,6 +1,6 @@
 sudo: false
 install:
-- curl https://static.rust-lang.org/rustup.sh | sh -- -y --disable-sudo
+- curl https://static.rust-lang.org/rustup.sh | sh -s -- --yes --disable-sudo
 script:
 - cargo build --verbose
 - cargo test --verbose
